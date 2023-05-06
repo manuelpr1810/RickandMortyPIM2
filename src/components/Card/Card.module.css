@@ -1,0 +1,70 @@
+.divcharacter {
+  background-color: #000000;
+  border-radius: 8px;
+  box-shadow: 0 10px 10px rgb(206, 201, 238);
+  padding: 20px;
+  width: 140px;
+  height: 240px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: auto;
+  font-size: 12px;
+
+}
+
+.divcharacter:hover {
+  background-color: #0069d9;
+}
+
+.imgcharacter{
+  width: 140px;
+  height: 300px;
+  border-radius: 8px;
+  overflow: auto;
+}
+
+.innerdivcharacter{
+  height: auto;
+  margin: 0 auto;
+}
+
+.h2character{
+  width: 80%;
+  height: auto;
+  margin: 0 auto;
+  /* overflow: auto; */
+  justify-content: center;
+  /* display: flex; */
+  flex-direction: column;
+  align-items: center;
+  color: #c4dcee;
+}
+ 
+.buttoncharacter {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-radius: 5px;
+  background-color: #c4dcee; /* Color de fondo
+  border: none; /* Sin borde */
+  color: black; /* Color del texto */
+  padding: 12px 24px; /* Espaciado del contenido */
+  text-align: center; /* Alineación del texto */
+  text-decoration: none; /* Sin subrayado */
+  display: inline-block; /* Bloque en línea */
+  font-size: 16px; /* Tamaño de la fuente */
+  border-radius: 4px; /* Radio de borde */
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition-duration: 0.3s; /* Duración de la transición */
+  padding: 3%;
+}
+  .buttoncharacter:hover {
+    background-color: #0059b3; /* Color de fondo */
+    cursor: pointer; /* Cambiar cursor */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  }
+
+
