@@ -4,7 +4,7 @@ import styles from "./SearchBar.module.css";
 
 
 export default function SearchBar(props) {
-   const { onSearch } = props;
+   const { onSearch} = props;
 
    const [id, setId] = useState();
 
@@ -15,7 +15,10 @@ export default function SearchBar(props) {
 
    return (
       <div className={styles.divbar}>
-         <input className={styles.divsearch} type='search' onChange = {handleChange} value = {id}/>
+         <input className={styles.divsearch} 
+         type='search' 
+         onChange = {handleChange} value = {id}
+      />
          <button className={styles.buttonbar} onClick={()=>{onSearch(id);}}>search</button>
       </div>
    );

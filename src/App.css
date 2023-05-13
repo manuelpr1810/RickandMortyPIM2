@@ -1,10 +1,9 @@
 .App {
    /* text-align: center; */
-   background-color: white;
+   background-image: URL("img/wp6961868.webp");
    background-repeat: no-repeat;
    background-size: cover;
    width: 100vw;
    height: 100vh;
    overflow: auto;
-  
 }
