@@ -9,9 +9,11 @@ export default function SearchBar(props) {
    const [id, setId] = useState();
 
    const handleChange = (evento) => {
+      
       setId(evento.target.value);
    };
 
+   
 
    return (
       <div className={styles.divbar}>

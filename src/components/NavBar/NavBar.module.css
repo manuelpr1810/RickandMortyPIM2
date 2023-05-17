@@ -1,17 +1,61 @@
 .container {
-    background: #454545;
+    background: #0b0b1d;
     width: 100vw;
-    height: 70px;
+    height: 30px;
     color: #f6f4e6;
     display: flex;
+    padding: 5px;
+    border-radius: 20px;
+    overflow: none;
+
+    position: fixed;
   }
 
-.active {
-    color: brown;
-    font-weight: bold;
-    text-decoration: none;
+
+
+.buttons {
+  background-color: #007bff;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 3px 8px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-flexbox;
+  align-items: center;
+  align-self:first baseline;
+  border-radius: 4px;
+  margin: 0 5px;
+  position: relative;
+  top: 10%;
+  left: 80%;
+  right: 0;
+  width: 100%;
+  max-width: 600px;
+
+
+}
+
+.buttons:hover {
+  background-color: #0069d9;
+}
+
+.buttons:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+@media screen and (max-width: 768px) {
+  .divbar {
+    max-width: 400px;
+    /* ajustes de estilos adicionales para pantallas más pequeñas */
   }
-  .disable {
-    color: #f6f4e6;
-    text-decoration: none;
+}
+
+@media screen and (max-width: 480px) {
+  .divbar {
+    max-width: 300px;
+    /* ajustes de estilos adicionales para pantallas más pequeñas */
   }
+}

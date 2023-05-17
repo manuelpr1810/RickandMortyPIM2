@@ -29,9 +29,13 @@ function App() {
       setCharacters(characters.filter((character)=>character.id !== Number(id)))
    };
 
+   const clearCharacters = () => {
+      setCharacters([]);
+    };
+
    return (
       <div className='App'>
-         <NavBar onSearch = {onSearch} />
+         <NavBar onSearch = {onSearch} onClear={clearCharacters}/>
 
          <Routes>
 

@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useState, useEffect  } from 'react';
 import { useParams} from "react-router-dom";
+import styles from "./Detail.module.css";
 
 
 
@@ -22,15 +23,17 @@ export default function Detail() {
     
 
     return (
-        <div>
-            <h1 >{character.name}</h1>
-         <h1 >{character.status}</h1>
-         <h1 >{character.species}</h1>
-         <h1 >{character.gender}</h1>
-         {/* {character.origin} && <h1 >{character.origin.name}</h1> */}
-         <h1 >{character.origin?.name}</h1>
-         {/* renderizado forzado */}
-         <img src={character.image} alt='character'/>
+        <div id= "detail">
+            <div className={styles.divContainer}>
+               <h1 className={styles.h1}>{character.name}</h1>
+               <h2 className={styles.h2}>{character.status}</h2>
+               <h2 className={styles.h2}>{character.species}</h2>
+               <h2 className={styles.h2}>{character.gender}</h2>
+               <h2 className={styles.h2}>{character.origin?.name}</h2> 
+                {/* {character.origin} && <h1 >{character.origin.name}</h1> */}
+               {/* renderizado forzado */}
+               <img className={styles.img} src={character.image} alt='character'/>
+            </div>
         </div>
     
     )

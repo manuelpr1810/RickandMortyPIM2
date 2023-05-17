@@ -1,6 +1,6 @@
 const pathRoutes = {
 
-     HOME: "/home",
+     HOME: "/",
      ABOUT: "/about",
      DETAIL: "/detail/:id"
 }
