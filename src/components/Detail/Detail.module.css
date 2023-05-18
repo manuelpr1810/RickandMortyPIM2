@@ -1,11 +1,17 @@
 .divContainer{
+  box-shadow: 0 10px 10px rgba(114, 95, 238, 0.808);
   padding: 20px;
   font-size: 24px;
     color: #c4dcee;
     position: absolute;
-    top: 7%;
+    top: 10%;
     right: 40%;
     border-radius: 10px;
+    text-shadow:
+    -1px -1px 0 black,  
+     1px -1px 0 black,
+    -1px  1px 0 black,
+     1px  1px 0 black;
 }
 
 .divContainer:hover {

@@ -1,7 +1,6 @@
 .divcharacter {
-  background-image: URL"src/img/12e6d3b6c8b167e89cef24142c8d7b00.png";
   border-radius: 8px;
-  box-shadow: 0 10px 10px rgb(206, 201, 238);
+  box-shadow: 0 10px 10px rgba(114, 95, 238, 0.808);
   padding: 20px;
   width: 140px;
   height: 240px;
@@ -15,9 +14,20 @@
 
 }
 
-.divcharacter:hover {
-  background-color: #0069d9;
-}
+ .divcharacter:hover {
+   opacity: 1;
+  animation: glow 1s infinite alternate;
+ }
+
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.8),
+                0 0 20px rgba(255, 255, 255, 0.8),
+                0 0 30px rgba(255, 255, 255, 0.8);
+  }}
 
 .imgcharacter{
   width: 140px;
@@ -41,6 +51,11 @@
   flex-direction: column;
   align-items: center;
   color: #c4dcee;
+  text-shadow:
+    -1px -1px 0 black,  
+     1px -1px 0 black,
+    -1px  1px 0 black,
+     1px  1px 0 black;
 }
  
 .buttoncharacter {
