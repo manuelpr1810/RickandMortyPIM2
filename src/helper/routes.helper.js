@@ -1,8 +1,9 @@
 const pathRoutes = {
 
-     HOME: "/",
+     HOME: "/home",
      ABOUT: "/about",
-     DETAIL: "/detail/:id"
+     DETAIL: "/detail/:id",
+     LOGIN: "/"
 }
 
 export default pathRoutes;

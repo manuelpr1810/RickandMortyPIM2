@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import {NavLink} from "react-router-dom";
 import SearchBar from '../SearchBar/SearchBar';
 import styleNav from "./NavBar.module.css";
@@ -24,9 +24,7 @@ const NavBar = (props) => {
         <button className={styleNav.buttons}>About</button>
         </NavLink>
         
-        <NavLink to= {pathRoutes.HOME} >
-        <button className={styleNav.buttons}>Home</button>
-        </NavLink>
+        
         <ClearButton onClick={onClear} />
 
     </div>;
