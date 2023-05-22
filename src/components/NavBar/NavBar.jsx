@@ -24,7 +24,6 @@ const NavBar = (props) => {
         <button className={styleNav.buttons}>About</button>
         </NavLink>
         
-        
         <ClearButton onClick={onClear} />
 
     </div>;

@@ -3,10 +3,28 @@ import styles from "./Form.module.css";
 
 
 const validate = (userData, errors, setErrors) => {
-    if(!userData.email) setErrors({ ...errors, email:"hey no olvides escribir tu correo"})
-};
+  let updatedErrors = {};
 
-export default function Form() {
+  if (!userData.email) {
+    updatedErrors.email = "Email vacío";
+  } else if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{3})+$/.test(userData.email)) {
+    updatedErrors.email = "Email inválido";
+  }
+
+  if (userData.email.length > 35) {
+    updatedErrors.email = "Email inválido";
+  }
+
+  if (!/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])([a-zA-Z0-9]{6,10})$/.test(userData.password)) {
+    updatedErrors.password = "Contraseña inválida";
+  }
+
+  setErrors(updatedErrors);
+}
+
+export default function Form(props) {
+    const  {login, guestlogin} = props;
+    
     const [userData, setUserData] = useState({
         email:"",
         password: "",
@@ -26,8 +44,17 @@ export default function Form() {
 
     const submitHandler = (evento) => {
         evento.preventDefault();
-        alert("bienvenido");
+        login(userData);
+        
     };
+
+    const handleGuestLogin = () => {
+   const guestUserData = {
+     email: "guest@example.com",
+     password: "guestpassword",
+   };
+    guestlogin(guestUserData);
+ };
 
     return (
         <div className={styles.container}>
@@ -36,23 +63,28 @@ export default function Form() {
         <form className={styles.form} onSubmit={submitHandler}>
           <input
           value={userData.email}
-            className={styles.input}
+            className={errors.email ? styles.error : styles.valid}
             type="text"
             placeholder="Correo electrónico"
             onChange={handleChange}
             name= "email"
           />
+          <span className={styles.span}>{errors.email}</span>
           <input
           value={userData.password}
-            className={styles.input}
+            className={errors.password ? styles.error : styles.valid}
             type="password"
             placeholder="Contraseña"
             onChange={handleChange}
             name="password"
           />
-          <button className={styles.button} type="submit">
+          <span className={styles.span}>{errors.password}</span>
+          <button onClick={submitHandler} className={styles.button} type="submit">
             Iniciar sesión
           </button>
+          <button className={styles.button} onClick={handleGuestLogin}>
+        Ingresar como invitado
+      </button>
         </form>
       </div>
     );

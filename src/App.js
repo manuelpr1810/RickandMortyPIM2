@@ -1,7 +1,7 @@
 // common imports
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
-import {Route, Routes, useLocation} from "react-router-dom";
+import {Route, Routes,useNavigate, useLocation} from "react-router-dom";
 // styles imports
 import './App.css';
 // components imports
@@ -37,6 +37,31 @@ function App() {
 
     const location = useLocation();
 
+    const [access, setAccess] = useState(false);
+
+    const EMAIL = 'morty@gmail.com';
+
+    const PASSWORD = "Rick1234";
+
+    const navigate = useNavigate();
+
+
+    const login = (userData) =>{
+      if (userData.password === PASSWORD && userData.email === EMAIL) {
+         setAccess(true);
+         navigate('/home');
+      }
+    }
+
+    const guestlogin = () =>{
+         setAccess(true);
+         navigate('/home');
+    }
+
+      useEffect(() => {
+         !access && navigate('/');
+         },[access]);  
+
    return (
       <div className='App'>
          <HomeButton/>
@@ -44,7 +69,7 @@ function App() {
          <Routes>
 
          {location.pathname === pathRoutes.LOGIN && (
-        <Route path={pathRoutes.LOGIN} element={<Form />}/>
+        <Route path={pathRoutes.LOGIN} element={<Form login={login} guestlogin={guestlogin}/>}/>
          )}
           
          
