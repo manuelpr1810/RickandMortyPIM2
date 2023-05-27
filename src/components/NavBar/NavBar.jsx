@@ -19,12 +19,22 @@ const NavBar = (props) => {
 
     return <div className={styleNav.container} >
         <SearchBar className={styleNav.buttons} onSearch = {onSearch} />
+
         <RandomSearchButton  onClick={handleRandomSearch}/>
+
         <NavLink to={pathRoutes.ABOUT}>
         <button className={styleNav.buttons}>About</button>
         </NavLink>
+
+        <NavLink to={pathRoutes.FAVORITES}>
+        <button className={styleNav.buttons}>Favorites</button>
+        </NavLink>
         
         <ClearButton onClick={onClear} />
+
+
+
+
 
     </div>;
 };

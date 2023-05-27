@@ -11,6 +11,7 @@ import About from "./components/about/About.jsx";
 import Detail from "./components/Detail/Detail.jsx";
 import pathRoutes from './helper/routes.helper';
 import Form from './components/Form/Form';
+import Favorites from './components/favorites/favorites';
 import HomeButton from './components/Homebutton/Homebutton';
 
 function App() {
@@ -60,7 +61,7 @@ function App() {
 
       useEffect(() => {
          !access && navigate('/');
-         },[access]);  
+         },[access, navigate]);  
 
    return (
       <div className='App'>
@@ -86,6 +87,8 @@ function App() {
          <Route path = {pathRoutes.ABOUT} element = {<About/>}/>
 
          <Route path = {pathRoutes.DETAIL} element = {<Detail/>}/>
+
+         <Route path = {pathRoutes.FAVORITES} element = {<Favorites/>}/>
 
          </Routes>
       </div>

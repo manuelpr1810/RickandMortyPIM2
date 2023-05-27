@@ -82,4 +82,27 @@
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
   }
 
+  .buttoncharacter2 {
+    position: absolute;
+    top: 0;
+    right: 80%;
+    border-radius: 5px;
+    background-color: #c4dcee; /* Color de fondo
+    border: none; /* Sin borde */
+    color: black; /* Color del texto */
+    padding: 12px 24px; /* Espaciado del contenido */
+    text-align: center; /* Alineación del texto */
+    text-decoration: none; /* Sin subrayado */
+    display: inline-block; /* Bloque en línea */
+    font-size: 16px; /* Tamaño de la fuente */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition-duration: 0.3s; /* Duración de la transición */
+    padding: 3%;
+  }
+    .buttoncharacter2:hover {
+      background-color: #0059b3; /* Color de fondo */
+      cursor: pointer; /* Cambiar cursor */
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
 

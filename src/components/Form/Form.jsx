@@ -7,7 +7,7 @@ const validate = (userData, errors, setErrors) => {
 
   if (!userData.email) {
     updatedErrors.email = "Email vacío";
-  } else if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{3})+$/.test(userData.email)) {
+  } else if (!/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{3})+$/.test(userData.email)) {
     updatedErrors.email = "Email inválido";
   }
 
