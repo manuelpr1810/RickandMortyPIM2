@@ -1,6 +1,8 @@
 export const ADD_FAV = "ADD_FAV";
 export const REMOVE_FAV = "REMOVE_FAV";
 export const ON_CLOSE = "ON_CLOSE";
+export const FILTER = "FILTER";
+export const ORDER = "ORDER";
 
 export const addFav = (character) => {
     return{ 
@@ -17,5 +19,17 @@ export const addFav = (character) => {
   export const onClose = (id) => {
     return{ 
       type: ON_CLOSE, payload: id
+    }
+  };
+
+  export const filterCards = (gender) => {
+    return{ 
+      type: FILTER, payload: gender
+    }
+  };
+
+  export const orderCards = (order) => {
+    return{ 
+      type: ORDER, payload: order
     }
   };

@@ -13,12 +13,15 @@ import {addFav, removeFav} from "../../redux/actions";
 
 
    React.useEffect(() => {
-      myFavorites.forEach((fav) => {
-         if (fav.id === props.id) {
-            setIsFav(true);
-         }
-      });
-   }, [myFavorites, props.id]);
+   //    myFavorites.forEach((fav) => {
+   //       if (fav.id === props.id) {
+   //          setIsFav(true);
+   //       }
+   //    });
+   // }, [myFavorites, props.id]);
+   const isCharacterFav = myFavorites.some((fav) => fav.id === id);
+  setIsFav(isCharacterFav);
+}, [myFavorites, id]);
 
    const handleFavorite = () =>{
       isFav ? removeFav(id) : addFav(props)
