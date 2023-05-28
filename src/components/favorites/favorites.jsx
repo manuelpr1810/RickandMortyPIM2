@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { onClose } from '../../redux/actions';
 import Card from '../Card/Card';
-// import styles from "./favorites.module.css";
+import styles from "./favorites.module.css";
 
 const Favorites = (props) => {
 const {myFavorites, onClose} = props;
@@ -13,6 +13,7 @@ const handleOnClose = (id) => {
     return <div>
         { myFavorites.map((character) =>{
             return (
+                <div className={styles.divfavorites}>
                 <Card 
             image={character.image}          
             id={character.id}
@@ -23,6 +24,7 @@ const handleOnClose = (id) => {
             origin={character.origin?.name}
             onClose = {handleOnClose}
             />
+            </div>
             )
         }
         )}

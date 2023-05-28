@@ -11,6 +11,8 @@
   position: relative;
   overflow: auto;
   font-size: 12px;
+  overflow: hidden;
+  border: 2px solid #c4dcee;
 
 }
 
@@ -30,15 +32,23 @@
   }}
 
 .imgcharacter{
-  width: 140px;
-  height: 300px;
+  width: 100%; /* Cambiado a 100% para ocupar todo el ancho del contenedor */
+  height: auto; /* Ajusta automáticamente la altura */
   border-radius: 8px;
-  overflow: auto;
+  object-fit: cover; /* Ajusta la imagen dentro del contenedor sin deformarla */
+  border: 2px solid #c4dcee; /* Añadido borde */
 }
 
 .innerdivcharacter{
   height: auto;
-  margin: 0 auto;
+  margin: 10px 0; /* Añadido margen superior e inferior */
+  text-align: center; /* Alineación del texto al centro */
+}
+
+.innerdivcharacter > a {
+  text-decoration: none ; /* Elimina el subrayado */
+  color: #c4dcee; /* Color del enlace */
+  font-weight: bold; /* Aplica negrita al texto */
 }
 
 .h2character{

@@ -7,9 +7,10 @@ import {addFav, removeFav} from "../../redux/actions";
 
 
  function Card(props) {
-   const {name, id, status, species, gender, origin, image, onClose, addFav, removeFav, myFavorites} = props;
-
+   const {name, id, image, onClose, addFav, removeFav, myFavorites} = props;
+   //  status, species, gender, origin, <= son props que retire de la vista de la card en home
    const [isFav, setIsFav] = React.useState(false);
+
 
    React.useEffect(() => {
       myFavorites.forEach((fav) => {
@@ -38,10 +39,10 @@ import {addFav, removeFav} from "../../redux/actions";
          <Link to= {`/detail/${id}`}>
          <h2 className={styles.h2character}>{name}</h2>
          </Link>
-         <h2 className={styles.h2character}>{status}</h2>
-         <h2 className={styles.h2character}>{species}</h2>
-         <h2 className={styles.h2character}>{gender}</h2>
-         <h2 className={styles.h2character}>{origin?.name}</h2>
+         {/* <h2 className={styles.h2character}>{status}</h2> */}
+         {/* <h2 className={styles.h2character}>{species}</h2> */}
+         {/* <h2 className={styles.h2character}>{gender}</h2> */}
+         {/* <h2 className={styles.h2character}>{origin?.name}</h2> */}
          </div>
       </div>
    );
