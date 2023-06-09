@@ -1,0 +1,47 @@
+
+
+.Ramdom {
+    background-color: #007bff;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 14px;
+    padding: 3px 2px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-flexbox;
+  align-items: center;
+  align-self:first baseline;
+    border-radius: 8px;
+    margin: 0 5px; 
+     position: fixed;
+    top: 1.5%;
+    left: 60% auto;
+    right: 0;
+    
+    width: 120px;
+    max-width: 600px;
+}
+  
+    .Ramdom:hover {
+      background-color: #0069d9;
+    }
+    
+    .Ramdom:focus {
+      outline: none;
+      box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+    }
+    
+    @media screen and (max-width: 768px) {
+      .Ramdom {
+        max-width: 400px;
+        /* ajustes de estilos adicionales para pantallas más pequeñas */
+      }
+    }
+    
+    @media screen and (max-width: 480px) {
+      .Ramdom {
+        max-width: 300px;
+        /* ajustes de estilos adicionales para pantallas más pequeñas */
+      }
+    }
