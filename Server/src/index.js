@@ -1,5 +1,5 @@
 const http = require('http');
-const character = require("./utils/data");
+const characters = require("./utils/data");
 const Port = 3001;
 
 http
@@ -7,7 +7,13 @@ http
     const {url} = req;
     res.setHeader('Access-Control-Allow-Origin', '*');
 
-    if(url === "/rickandmorty/character"){
+    if(url.includes( "/rickandmorty/character")){
+        const id = Number(url.split("/").pop())
+        const character = characters.find((char)=>{
+            return char.id === id
+        })
+        res.writeHead(200, {"Content-Type" : "application/json"});
+        res.end(JSON.stringify(character))
 
     }
 
