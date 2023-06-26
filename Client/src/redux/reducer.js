@@ -14,10 +14,10 @@ const initialState = {
             return { ...state, 
                 myFavorites: action.payload };
         case ON_CLOSE:
-            let copyClose = state.allCharacters.filter((character)=>character.id !== Number(action.payload))
+            let copyClose = state.allCharacters.filter((character)=>character.id !== action.payload)
             return {
                 ...state,
-                myFavorites: copyClose
+                allCharacters: copyClose
             };
         case FILTER:
             let copyFilter = state.allCharacters.filter((character)=>{

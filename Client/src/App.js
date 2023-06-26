@@ -18,22 +18,21 @@ function App() {
 
    const [characters, setCharacters] = useState([]);
 
-   const onSearch= (id) => {
-      if (characters.find((character)=> character.id === id))
-      {return window.alert('¡ personaje con este ID repetido!');
-   }
-      axios(`http://localhost:3001/rickandmorty/character/${id}`).then(({ data }) => {
-         if (data.name) {
-            setCharacters((oldChars) => [...oldChars, data]);
-         } else {
-            window.alert('¡No hay personajes con este ID!');
-         }
-      });
+   const onSearch= async (id) => {
+      let response =  await axios(`http://localhost:3001/rickandmorty/character/${id}`);
+    try {
+     let { data } = response;
+          if (data.name) {
+             setCharacters((oldChars) => [...oldChars, data]);
+          } else {window.alert('¡No hay personajes con este ID!');
+          };
+    } catch (error) { console.log("error en peticion axios onSearch", error);}
+
    }
 
-   const onClose = (id) =>{
-      setCharacters(characters.filter((character)=>character.id !== Number(id)))
-   };
+   // const onClose = (id) =>{
+   //    setCharacters(characters.filter((character)=>character.id !== id))
+   // };
 
    const clearCharacters = () => {
       setCharacters([]);
@@ -45,14 +44,15 @@ function App() {
 
     const navigate = useNavigate();
 
-    function login(userData) {
+    async function login(userData) {
       const { email, password } = userData;
       const URL = 'http://localhost:3001/rickandmorty/login/';
-      axios(URL + `?email=${email}&password=${password}`).then(({ data }) => {
-         const { access } = data;
-         setAccess(data);
-         access && navigate('/home');
-      });
+      try {
+        let response = await axios(URL + `?email=${email}&password=${password}`)
+            const { access } = response.data;
+            setAccess(response.data);
+            access && navigate('/home'); 
+      } catch (error) {console.log("error en peticion axios onSearch", error);}
    }
     
 
@@ -81,7 +81,9 @@ function App() {
           element={
             <>
               <NavBar onSearch={onSearch} onClear={clearCharacters} />
-              <Cards characters={characters} onClose={onClose} />
+              <Cards characters={characters}
+               // onClose={onClose}
+                />
             </>
           }
         />

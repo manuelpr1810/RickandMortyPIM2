@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import React from 'react';
 import styles from "./Card.module.css";
 import { connect } from 'react-redux';
-import {addFav, removeFav} from "../../redux/actions";
+import {addFav, removeFav, onClose} from "../../redux/actions";
 
 
 
@@ -29,9 +29,10 @@ import {addFav, removeFav} from "../../redux/actions";
    };
 
 
+
    return (
       <div className={styles.divcharacter}>
-         <button className={styles.buttoncharacter} onClick={()=>{onClose(id)}}> X </button>
+         <button className={styles.buttoncharacter} onClick={()=>onClose(id)}> X </button>
 
          {isFav ? (<button className={styles.buttoncharacter2} onClick={handleFavorite}>❤️</button>) : (
             <button className={styles.buttoncharacter2} onClick={handleFavorite}>🤍</button>)}
@@ -53,7 +54,8 @@ import {addFav, removeFav} from "../../redux/actions";
 export function mapDispatchToProps(dispatch) {
    return {
       addFav: (character)=>{dispatch(addFav(character))},
-      removeFav: (id)=>{dispatch(removeFav(id))}
+      removeFav: (id)=>{dispatch(removeFav(id))},
+      onClose: (id)=>{dispatch(onClose(id))}
 
    };
 };
