@@ -12,7 +12,7 @@ export default function SearchBar(props) {
       
       setId(evento.target.value);
    };
-
+   
    
 
    return (

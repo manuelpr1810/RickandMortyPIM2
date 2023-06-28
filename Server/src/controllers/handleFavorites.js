@@ -9,6 +9,7 @@ return res.status(200).json(myFavorites)
 const deleteFav = (req, res)=>{
     const {id} = req.params;
     const deletedChar = myFavorites.filter((char)=>{
+        console.log(char.id !== id);
         return char.id !== id
     })
     myFavorites = deletedChar;

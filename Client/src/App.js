@@ -30,9 +30,9 @@ function App() {
 
    }
 
-   // const onClose = (id) =>{
-   //    setCharacters(characters.filter((character)=>character.id !== id))
-   // };
+   const onClose = (id) =>{
+      setCharacters(characters.filter((character)=>character.id !== id))
+   };
 
    const clearCharacters = () => {
       setCharacters([]);
@@ -82,7 +82,7 @@ function App() {
             <>
               <NavBar onSearch={onSearch} onClear={clearCharacters} />
               <Cards characters={characters}
-               // onClose={onClose}
+               onClose={onClose}
                 />
             </>
           }

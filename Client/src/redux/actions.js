@@ -27,11 +27,11 @@ export const removeFav = (id) => {
   };
 };
 
-  export const onClose = (id) => {
-    return{ 
-      type: ON_CLOSE, payload: id
-    }
-  };
+  // export const onClose = (id) => {
+  //   return{ 
+  //     type: ON_CLOSE, payload: id
+  //   }
+  // };
 
   export const filterCards = (gender) => {
     return{ 

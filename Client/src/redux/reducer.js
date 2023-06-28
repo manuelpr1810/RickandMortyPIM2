@@ -1,4 +1,4 @@
-const {ADD_FAV, REMOVE_FAV, ON_CLOSE, FILTER, ORDER} = require ("./actions");
+const {ADD_FAV, REMOVE_FAV, FILTER, ORDER} = require ("./actions");
 
 const initialState = {
     myFavorites: [],
@@ -13,12 +13,12 @@ const initialState = {
         case REMOVE_FAV:
             return { ...state, 
                 myFavorites: action.payload };
-        case ON_CLOSE:
-            let copyClose = state.allCharacters.filter((character)=>character.id !== action.payload)
-            return {
-                ...state,
-                allCharacters: copyClose
-            };
+        // case ON_CLOSE:
+        //    state.allCharacters.filter((character)=>character.id !== action.payload)
+        //     return {
+        //         ...state,
+        //         allCharacters: state.allCharacters.filter((character)=>character.id !== action.payload)
+            // };
         case FILTER:
             let copyFilter = state.allCharacters.filter((character)=>{
                 return character.gender === action.payload
