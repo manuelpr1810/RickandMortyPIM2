@@ -17,9 +17,13 @@ import Favorites from './components/favorites/favorites';
 import HomeButton from './components/Homebutton/Homebutton';
 
 function App() {
-
+   const dispatch = useDispatch();
+   const navigate = useNavigate();
+   const location = useLocation();
    const [characters, setCharacters] = useState([]);
-
+   const [access, setAccess] = useState(false);
+   
+   
    const onSearch= async (id) => {
       let response =  await axios(`http://localhost:3001/rickandmorty/character/${id}`);
       const exists = characters.find((char) => char.id === id)
@@ -32,12 +36,11 @@ function App() {
           };
     } catch (error) { console.log("error en peticion axios onSearch", error);}
 
-                  }
-                  else {window.alert('¡Ya encontraste a ese personaje!');
+   }
+   else {window.alert('¡Ya encontraste a ese personaje!');
                   }
    }
 
-   const dispatch = useDispatch();
    const onClose = (id) =>{
       dispatch(removeFav(id))
       setCharacters(characters.filter((character)=>character.id !== id))
@@ -45,16 +48,14 @@ function App() {
 
    const clearCharacters = () => {
       setCharacters([]);
-    };
-
-    
-    const [access, setAccess] = useState(false);
-    
-    const navigate = useNavigate();
-    
+   };
+   useEffect(() => {
+      !access && navigate('/');
+   },[access, navigate]);  
+   
     async function login(userData) {
-      const { email, password } = userData;
-      const URL = 'http://localhost:3001/rickandmorty/login/';
+       const { email, password } = userData;
+       const URL = 'http://localhost:3001/rickandmorty/login/';
       try {
         let response = await axios(URL + `?email=${email}&password=${password}`)
             const { access } = response.data;
@@ -68,11 +69,6 @@ function App() {
       navigate('/home');
    }
    
-   useEffect(() => {
-      !access && navigate('/');
-   },[access, navigate]);  
-   
-   const location = useLocation();
    return (
       <div className='App'>
          <HomeButton/>
