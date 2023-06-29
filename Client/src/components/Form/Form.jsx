@@ -5,19 +5,31 @@ import styles from "./Form.module.css";
 const validate = (userData, errors, setErrors) => {
   let updatedErrors = {};
 
-  if (!userData.email) {
-    updatedErrors.email = "Email vacío";
-  } else if (!/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{3})+$/.test(userData.email)) {
-    updatedErrors.email = "Email inválido";
-  }
+  switch (true) {
+    case !userData.email:
+      updatedErrors.email = "Email vacío";
+      break;
 
-  if (userData.email.length > 35) {
-    updatedErrors.email = "Email inválido";
-  }
+    case !/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{3})+$/.test(userData.email):
+      updatedErrors.email = "Email inválido";
+      break;
 
-  if (!/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])([a-zA-Z0-9]{6,10})$/.test(userData.password)) {
-    updatedErrors.password = "Contraseña inválida";
-  }
+    case userData.email.length > 35:
+      updatedErrors.email = "Email inválido";
+      break;
+
+    default:
+        updatedErrors = {};
+      }
+
+  switch (true) {
+    case !/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])([a-zA-Z0-9]{6,10})$/.test(userData.password):
+      updatedErrors.password = "Contraseña inválida";
+      break;
+      
+    default:
+        updatedErrors = {};
+      }
 
   setErrors(updatedErrors);
 }
@@ -44,21 +56,19 @@ export default function Form(props) {
 
     const submitHandler = (evento) => {
         evento.preventDefault();
-        login(userData);
-        
+        login(userData); 
     };
 
     const handleGuestLogin = () => {
-   const guestUserData = {
-     email: "guest@example.com",
-     password: "guestpassword",
-   };
+      const guestUserData = {
+        email: "guest@example.com",
+        password: "guestpassword",
+     };
     guestlogin(guestUserData);
  };
 
     return (
         <div className={styles.container}>
-        {/* <img src="" alt="avatar" className={styles.imagenestilizada}/> */}
         <h1 className={styles.title}>Iniciar sesión</h1>
         <form className={styles.form} onSubmit={submitHandler}>
           <input

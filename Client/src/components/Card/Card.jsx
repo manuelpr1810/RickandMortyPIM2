@@ -8,17 +8,10 @@ import {addFav, removeFav} from "../../redux/actions";
 
  function Card(props) {
    const {name, id, image, onClose, addFav, removeFav, myFavorites} = props;
-   //  status, species, gender, origin, <= son props que retire de la vista de la card en home
    const [isFav, setIsFav] = React.useState(false);
 
 
    React.useEffect(() => {
-   //    myFavorites.forEach((fav) => {
-   //       if (fav.id === props.id) {
-   //          setIsFav(true);
-   //       }
-   //    });
-   // }, [myFavorites, props.id]);
    const isCharacterFav = myFavorites.some((fav) => fav.id === id);
   setIsFav(isCharacterFav);
 }, [myFavorites, id]);
@@ -27,12 +20,15 @@ import {addFav, removeFav} from "../../redux/actions";
       isFav ? removeFav(id) : addFav(props)
       setIsFav(!isFav)
    };
-
-
+   const handleClose = () => {
+		console.log(id)
+		removeFav(id)
+		onClose(id)
+   };
 
    return (
       <div className={styles.divcharacter}>
-         <button className={styles.buttoncharacter} onClick={()=>onClose(id)}> X </button>
+         <button className={styles.buttoncharacter} onClick={handleClose}> X </button>
 
          {isFav ? (<button className={styles.buttoncharacter2} onClick={handleFavorite}>❤️</button>) : (
             <button className={styles.buttoncharacter2} onClick={handleFavorite}>🤍</button>)}

@@ -1,7 +1,6 @@
 import axios from "axios";
 export const ADD_FAV = "ADD_FAV";
 export const REMOVE_FAV = "REMOVE_FAV";
-export const ON_CLOSE = "ON_CLOSE";
 export const FILTER = "FILTER";
 export const ORDER = "ORDER";
 
@@ -26,12 +25,6 @@ export const removeFav = (id) => {
      });
   };
 };
-
-  // export const onClose = (id) => {
-  //   return{ 
-  //     type: ON_CLOSE, payload: id
-  //   }
-  // };
 
   export const filterCards = (gender) => {
     return{ 

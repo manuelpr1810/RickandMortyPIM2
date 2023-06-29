@@ -1,6 +1,7 @@
 const express = require('express');
 const server = express();
-// const PORT = 3001;
+const morgan = require("morgan");
+const cors = require("cors");
 const router = require("./routes/index");
 
 server.use((req, res, next) => {
@@ -16,8 +17,10 @@ server.use((req, res, next) => {
    );
    next();
 });
-
+server.use(morgan("dev"));
 server.use(express.json());
+server.use(cors());
 server.use("/rickandmorty", router);
+server.use("*", (req, res)=>res.status(404).json({error : "NOT FOUND"}));
 
 module.exports = server;

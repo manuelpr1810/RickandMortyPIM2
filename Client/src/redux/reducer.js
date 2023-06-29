@@ -13,12 +13,6 @@ const initialState = {
         case REMOVE_FAV:
             return { ...state, 
                 myFavorites: action.payload };
-        // case ON_CLOSE:
-        //    state.allCharacters.filter((character)=>character.id !== action.payload)
-        //     return {
-        //         ...state,
-        //         allCharacters: state.allCharacters.filter((character)=>character.id !== action.payload)
-            // };
         case FILTER:
             let copyFilter = state.allCharacters.filter((character)=>{
                 return character.gender === action.payload

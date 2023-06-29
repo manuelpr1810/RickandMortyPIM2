@@ -1,7 +1,9 @@
 // common imports
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useDispatch } from 'react-redux';
 import {Route, Routes,useNavigate, useLocation} from "react-router-dom";
+import { removeFav } from './redux/actions';
 // styles imports
 import './App.css';
 // components imports
@@ -20,7 +22,9 @@ function App() {
 
    const onSearch= async (id) => {
       let response =  await axios(`http://localhost:3001/rickandmorty/character/${id}`);
-    try {
+      const exists = characters.find((char) => char.id === id)
+		if (!exists) {
+      try {
      let { data } = response;
           if (data.name) {
              setCharacters((oldChars) => [...oldChars, data]);
@@ -28,9 +32,14 @@ function App() {
           };
     } catch (error) { console.log("error en peticion axios onSearch", error);}
 
+                  }
+                  else {window.alert('¡Ya encontraste a ese personaje!');
+                  }
    }
 
+   const dispatch = useDispatch();
    const onClose = (id) =>{
+      dispatch(removeFav(id))
       setCharacters(characters.filter((character)=>character.id !== id))
    };
 
@@ -38,12 +47,11 @@ function App() {
       setCharacters([]);
     };
 
-    const location = useLocation();
-
+    
     const [access, setAccess] = useState(false);
-
+    
     const navigate = useNavigate();
-
+    
     async function login(userData) {
       const { email, password } = userData;
       const URL = 'http://localhost:3001/rickandmorty/login/';
@@ -52,19 +60,19 @@ function App() {
             const { access } = response.data;
             setAccess(response.data);
             access && navigate('/home'); 
-      } catch (error) {console.log("error en peticion axios onSearch", error);}
+         } catch (error) {console.log("error en peticion axios onSearch", error);}
    }
-    
-
-    const guestlogin = () =>{
-         setAccess(true);
-         navigate('/home');
-    }
-
-      useEffect(() => {
-         !access && navigate('/');
-         },[access, navigate]);  
-
+   
+   const guestlogin = () =>{
+      setAccess(true);
+      navigate('/home');
+   }
+   
+   useEffect(() => {
+      !access && navigate('/');
+   },[access, navigate]);  
+   
+   const location = useLocation();
    return (
       <div className='App'>
          <HomeButton/>

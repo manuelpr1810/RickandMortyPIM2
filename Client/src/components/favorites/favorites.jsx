@@ -5,7 +5,7 @@ import Card from '../Card/Card';
 import styles from "./favorites.module.css";
 
 const Favorites = (props) => {
-    const {myFavorites, onClose} = props;
+    const {myFavorites} = props;
 
 const [aux, setAux] = React.useState(false);
     
@@ -46,7 +46,6 @@ const dispatch = useDispatch();
                 species={character.species}
                 gender={character.gender}
                 origin={character.origin?.name}
-                onClose={onClose}
             />
             </div>
             )
