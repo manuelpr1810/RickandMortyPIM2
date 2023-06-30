@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import React from 'react';
+import { useLocation } from 'react-router-dom';
 import styles from "./Card.module.css";
 import { connect } from 'react-redux';
 import {addFav, removeFav} from "../../redux/actions";
@@ -9,7 +10,16 @@ import {addFav, removeFav} from "../../redux/actions";
  function Card(props) {
    const {name, id, image, onClose, addFav, removeFav, myFavorites} = props;
    const [isFav, setIsFav] = React.useState(false);
+   const [disabled, setDisabled] = React.useState(false);
+   const location = useLocation();
 
+  React.useEffect(() => {
+    if (location.pathname === '/favorites') {
+      setDisabled(true);
+    } else {
+      setDisabled(false);
+    }
+  }, [location.pathname]);
 
    React.useEffect(() => {
    const isCharacterFav = myFavorites.some((fav) => fav.id === id);
@@ -20,6 +30,7 @@ import {addFav, removeFav} from "../../redux/actions";
       isFav ? removeFav(id) : addFav(props)
       setIsFav(!isFav)
    };
+
    const handleClose = () => {
 		console.log(id)
 		removeFav(id)
@@ -28,7 +39,7 @@ import {addFav, removeFav} from "../../redux/actions";
 
    return (
       <div className={styles.divcharacter}>
-         <button className={styles.buttoncharacter} onClick={handleClose}> X </button>
+         <button className={styles.buttoncharacter} disabled={disabled} onClick={handleClose}> X </button>
 
          {isFav ? (<button className={styles.buttoncharacter2} onClick={handleFavorite}>❤️</button>) : (
             <button className={styles.buttoncharacter2} onClick={handleFavorite}>🤍</button>)}
